@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>sitezinho</title>
+</head>
+
+<body>
+    <!-- Áudio inicialmente pausado -->
+    <audio id="audio">
+        <source src="HINO_DO_BOTAFOGO-RJ.mp3" type="audio/mp3">
+    </audio>
+
+    <form action="" id="form">
+        <h1 class="question">Palmeiras tem mundial?</h1>
+        <div class="buttonsContainer">
+            <button type="submit" id="yesButton">SIM</button>
+            <button type="submit" id="noButton">NÃO</button>
+        </div>
+    </form>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const audio = document.getElementById('audio'); // Referência ao elemento de áudio
+        const form = document.getElementById('form');
+
+        yesButton.addEventListener('mouseover', function () {
+            // Limita os valores para manter o botão dentro da janela
+            const maxX = window.innerWidth - yesButton.offsetWidth;
+            const maxY = window.innerHeight - yesButton.offsetHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            yesButton.style.position = 'absolute'; // Garante que o botão seja posicionado
+            yesButton.style.left = `${randomX}px`;
+            yesButton.style.top = `${randomY}px`;
+        });
+
+        form.addEventListener('submit', () =>{
+            event.preventDefault();
+        });
+
+        yesButton.addEventListener('click', function (event) {
+            alert("Resposta errada, tente novamente...");
+        });
+
+        noButton.addEventListener('click', function () {
+            alert("Resposta correta!");
+            audio.play().catch((error) => {
+                console.error("Erro ao tentar reproduzir o áudio:", error);
+            });
+        });
+    </script>
+</body>
+
+</html>
