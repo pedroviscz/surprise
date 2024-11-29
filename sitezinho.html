@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <!-- Áudio inicialmente pausado -->
     <audio id="audio">
         <source src="HINO_DO_BOTAFOGO-RJ.mp3" type="audio/mp3">
     </audio>
@@ -17,8 +16,8 @@
     <form action="" id="form">
         <h1 class="question">Palmeiras tem mundial?</h1>
         <div class="buttonsContainer">
-            <button type="submit" id="yesButton">SIM</button>
-            <button type="submit" id="noButton">NÃO</button>
+            <button id="yesButton">SIM</button>
+            <button id="noButton">NÃO</button>
         </div>
     </form>
 
@@ -28,8 +27,7 @@
         const audio = document.getElementById('audio'); // Referência ao elemento de áudio
         const form = document.getElementById('form');
 
-        yesButton.addEventListener('mouseover', function () {
-            // Limita os valores para manter o botão dentro da janela
+        yesButton.addEventListener('click', function () {
             const maxX = window.innerWidth - yesButton.offsetWidth;
             const maxY = window.innerHeight - yesButton.offsetHeight;
 
@@ -43,10 +41,6 @@
 
         form.addEventListener('submit', () =>{
             event.preventDefault();
-        });
-
-        yesButton.addEventListener('click', function (event) {
-            alert("Resposta errada, tente novamente...");
         });
 
         noButton.addEventListener('click', function () {
